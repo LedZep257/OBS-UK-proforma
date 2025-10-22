@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS UK - PPH Management Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header no-print">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>OBS UK</h1>
+                    <p>Obstetric Bleeding Study UK</p>
+                </div>
+                <div class="header-actions">
+                    <button onclick="saveForm()" class="btn btn-save">Save Form</button>
+                    <button onclick="loadForm()" class="btn btn-load">Load Saved</button>
+                    <button onclick="clearForm()" class="btn btn-clear">Clear Form</button>
+                    <button onclick="generatePDF()" class="btn btn-pdf">Generate PDF</button>
+                    <button onclick="window.print()" class="btn btn-print">Print</button>
+                </div>
+            </div>
+        </header>
+
+        <form id="pph-form">
+            <!-- Patient Addressograph Section -->
+            <div class="patient-info">
+                <h3>Patient Addressograph</h3>
+                <input type="text" name="patient_name" placeholder="Patient Name">
+                <input type="text" name="patient_id" placeholder="Patient ID">
+                <input type="date" name="patient_dob" placeholder="Date of Birth">
+            </div>
+
+            <!-- Page 1 -->
+            <div class="page page-1">
+                <div class="page-header">
+                    <h2>Postpartum Haemorrhage Management Checklist</h2>
+                    <p class="subtitle">Designed to be used in maternity settings. This is not a comprehensive guideline but a checklist to facilitate an appropriately escalating multidisciplinary team approach to postpartum haemorrhage and as an aid to documentation.</p>
+                    <p class="tagline"><strong>Working together to reduce harm from Postpartum Haemorrhage</strong></p>
+                </div>
+
+                <div class="two-column-layout">
+                    <!-- LEFT COLUMN - STAGE 0 -->
+                    <div class="stage-section stage-0">
+                        <h2 class="stage-title">Stage 0</h2>
+                        
+                        <!-- PPH Risk Assessment -->
+                        <div class="section-box">
+                            <h3>PPH Risk Assessment</h3>
+                            <p class="section-note">Complete for all patients on admission (including LSCS)</p>
+                            
+                            <div class="lab-results">
+                                <label>Most recent Hb = <input type="text" name="hb_recent" size="8"></label>
+                                <label>Plt = <input type="text" name="plt_recent" size="8"></label>
+                                <label>Result Date: <input type="date" name="lab_date"></label>
+                            </div>
+
+                            <h4 class="risk-header">Antenatal - "Increased risk" if any of the following are met:</h4>
+                            
+                            <div class="checklist-item">
+                                <input type="checkbox" id="anaemia" name="anaemia">
+                                <label for="anaemia">Anaemia or bleeding disorder (Hb <95g/L, platelet count <100x10⁹/L)</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="bmi" name="bmi">
+                                <label for="bmi">BMI <18kg/m² or >35kg/m² or Booking Weight <55kg</label>
+                                <div class="sub-item">
+                                    <em>If low weight/BMI – do you need to calculate the circulating blood volume?</em>
+                                </div>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="previous_births" name="previous_births">
+                                <label for="previous_births">≥ 5 previous vaginal births</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="uterine_surgery" name="uterine_surgery">
+                                <label for="uterine_surgery">Previous uterine surgery</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="previous_pph" name="previous_pph">
+                                <label for="previous_pph">Previous Postpartum Haemorrhage >1L</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="multiple_pregnancy" name="multiple_pregnancy">
+                                <label for="multiple_pregnancy">Multiple pregnancy or estimated fetal weight >4.5kg</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="abnormal_placenta" name="abnormal_placenta">
+                                <label for="abnormal_placenta">Abnormal placental implantation</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="polyhydramnios" name="polyhydramnios">
+                                <label for="polyhydramnios">Polyhydramnios</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="abruption" name="abruption">
+                                <label for="abruption">Known Abruption or Antepartum Haemorrhage</label>
+                            </div>
+
+                            <p class="section-note"><em>Please make an on-going assessment of the following risk factors throughout labour and birth</em></p>
+
+                            <h4 class="risk-header">Perinatal - "Increased risk" if any of the following are met:</h4>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="chorioamnionitis" name="chorioamnionitis">
+                                <label for="chorioamnionitis">Suspicion of chorioamnionitis / Sepsis</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="oxytocin_augment" name="oxytocin_augment">
+                                <label for="oxytocin_augment">Labour augmented with oxytocin</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="prolonged_labour" name="prolonged_labour">
+                                <label for="prolonged_labour">Prolonged labour</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="assisted_birth" name="assisted_birth">
+                                <label for="assisted_birth">Assisted vaginal birth</label>
+                            </div>
+
+                            <div class="checklist-item">
+                                <input type="checkbox" id="retained_products" name="retained_products">
+                                <label for="retained_products">Retained products of conception</label>
+                            </div>
+                        </div>
+
+                        <!-- Plan Section -->
+                        <div class="section-box plan-section">
+                            <h3>Plan to measure & record all blood loss</h3>
+                            <p class="section-note"><em>(for pool birth estimation may be required)</em></p>
+
+                            <h4>Act</h4>
+                            <p><strong>If patient at increased risk:</strong></p>
+                            
+                            <div class="yes-no-group">
+                                <label>Are they Suitable for EI blood or 2 units Xmatch?</label>
+                                <label><input type="radio" name="ei_blood" value="yes"> Yes</label>
+                                <label><input type="radio" name="ei_blood" value="no"> No</label>
+                            </div>
+
+                            <div class="yes-no-group">
+                                <label>Is IV access required? (at least 16 Gauge)</label>
+                                <label><input type="radio" name="iv_access_req" value="yes"> Yes</label>
+                                <label><input type="radio" name="iv_access_req" value="no"> No</label>
+                            </div>
+
+                            <h4>Treat</h4>
+                            <div class="yes-no-group">
+                                <label>Planned an active 3rd stage management?</label>
+                                <label><input type="radio" name="active_3rd_stage" value="yes"> Yes</label>
+                                <label><input type="radio" name="active_3rd_stage" value="no"> No</label>
+                            </div>
+
+                            <div class="form-completion">
+                                <label>Completed by: <input type="text" name="stage0_completed_by"></label>
+                                <label>Date: <input type="date" name="stage0_date"></label>
+                                <label>Time: <input type="time" name="stage0_time"></label>
+                                <label>Location: <input type="text" name="stage0_location"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN - STAGE 1 -->
+                    <div class="stage-section stage-1">
+                        <h2 class="stage-title">Stage 1</h2>
+                        <h3 class="stage-subtitle">>500ml ongoing blood loss</h3>
+                        <p class="stage-note">Spontaneous & Assisted vaginal birth</p>
+
+                        <!-- Get Help -->
+                        <div class="section-box">
+                            <h3>Get Help</h3>
+                            <div class="staff-table">
+                                <div class="staff-row">
+                                    <label>Notify midwife in charge</label>
+                                </div>
+                                <div class="staff-row">
+                                    <label>Name: <input type="text" name="mw_charge_stage1"></label>
+                                    <label>Time arrived: <input type="time" name="mw_charge_time_stage1"></label>
+                                </div>
+                                <div class="staff-row">
+                                    <label>Request additional staff to assist with measurement</label>
+                                </div>
+                                <div class="staff-row">
+                                    <label>Other staff present:</label>
+                                </div>
+                                <div class="staff-entry">
+                                    <input type="text" name="other_staff1_stage1" placeholder="Name">
+                                    <input type="text" name="other_staff1_des_stage1" placeholder="Designation">
+                                    <input type="time" name="other_staff1_time_stage1" placeholder="Time">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Act Section -->
+                        <div class="section-box action-section">
+                            <h3>Act</h3>
+                            <div class="action-table">
+                                <div class="action-row">
+                                    <span class="action-item">Measure Blood Loss (cumulative measurement)</span>
+                                    <input type="text" name="act_mbl_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="act_mbl_time" size="8">
+                                    <input type="text" name="act_mbl_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Record observations on MEOWS every 10 min</span>
+                                    <input type="text" name="act_meows_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="act_meows_time" size="8">
+                                    <input type="text" name="act_meows_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">IV access at least 16 Gauge</span>
+                                    <input type="text" name="act_iv_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="act_iv_time" size="8">
+                                    <input type="text" name="act_iv_init" placeholder="Initial" size="5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cause of Bleeding -->
+                        <div class="section-box cause-section">
+                            <h3>What is the cause of bleeding?</h3>
+                            <p><strong>Tone, Trauma, Tissue, Thrombin</strong> (please circle cause(s))</p>
+                            <div class="cause-checkboxes">
+                                <label><input type="checkbox" name="cause_tone_s1"> Tone</label>
+                                <label><input type="checkbox" name="cause_trauma_s1"> Trauma</label>
+                                <label><input type="checkbox" name="cause_tissue_s1"> Tissue</label>
+                                <label><input type="checkbox" name="cause_thrombin_s1"> Thrombin</label>
+                            </div>
+                        </div>
+
+                        <!-- Treat Section -->
+                        <div class="section-box treat-section">
+                            <h3>Treat</h3>
+                            <div class="action-table">
+                                <div class="action-row">
+                                    <span class="action-item">Uterine massage</span>
+                                    <input type="text" name="treat_massage_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_massage_time" size="8">
+                                    <input type="text" name="treat_massage_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Give uterotonics (record on page 3 & prescribe)</span>
+                                    <input type="text" name="treat_utero_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_utero_time" size="8">
+                                    <input type="text" name="treat_utero_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Inspect genital tract</span>
+                                    <input type="text" name="treat_inspect_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_inspect_time" size="8">
+                                    <input type="text" name="treat_inspect_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Empty bladder</span>
+                                    <input type="text" name="treat_bladder_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_bladder_time" size="8">
+                                    <input type="text" name="treat_bladder_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Check placenta & membranes</span>
+                                    <input type="text" name="treat_placenta_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_placenta_time" size="8">
+                                    <input type="text" name="treat_placenta_init" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Bimanual compression</span>
+                                    <input type="text" name="treat_bimanual_by" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_bimanual_time" size="8">
+                                    <input type="text" name="treat_bimanual_init" placeholder="Initial" size="5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- If Bleeding Stopped -->
+                        <div class="section-box stopped-section">
+                            <h3>If bleeding stopped:</h3>
+                            <label>Please record MBL here: <input type="number" name="mbl_stopped_s1" size="10"> ml</label>
+                            
+                            <div class="form-completion">
+                                <label>Completed by: <input type="text" name="stage1_completed_by"></label>
+                                <label>Date: <input type="date" name="stage1_date"></label>
+                                <label>Time: <input type="time" name="stage1_time"></label>
+                                <label>Location: <input type="text" name="stage1_location"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="page page-2 page-break">
+                <!-- STAGE 2 -->
+                <div class="stage-section stage-2">
+                    <h2 class="stage-title">Stage 2</h2>
+                    <h3 class="stage-subtitle">>1000mL blood loss OR clinical concern (e.g. abruption or concealed bleeding) OR abnormal vital signs indicating urgent medical review</h3>
+                    <p class="stage-note">Progress to here from stage 1 if spontaneous & assisted vaginal birth. Re-start here after stage 0 if LSCS</p>
+
+                    <!-- Get Help -->
+                    <div class="section-box">
+                        <h3>Get Help</h3>
+                        <div class="staff-grid">
+                            <div class="staff-line">
+                                <label>MW in charge Name:</label>
+                                <input type="text" name="mw_charge_s2">
+                                <label>time:</label>
+                                <input type="time" name="mw_charge_time_s2">
+                            </div>
+                            <div class="staff-line">
+                                <label>Obstetrician Name:</label>
+                                <input type="text" name="obstetrician_s2">
+                                <label>time:</label>
+                                <input type="time" name="obstetrician_time_s2">
+                            </div>
+                            <div class="staff-line">
+                                <label>Anaesthetist Name:</label>
+                                <input type="text" name="anaesthetist_s2">
+                                <label>time:</label>
+                                <input type="time" name="anaesthetist_time_s2">
+                            </div>
+                            <div class="staff-line">
+                                <label>MSW/HCA Name:</label>
+                                <input type="text" name="msw_s2">
+                                <label>time:</label>
+                                <input type="time" name="msw_time_s2">
+                            </div>
+
+                            <h4>Other staff</h4>
+                            <div class="staff-entry">
+                                <input type="text" name="other_staff1_s2" placeholder="Name">
+                                <input type="text" name="other_staff1_des_s2" placeholder="Designation">
+                                <input type="time" name="other_staff1_time_s2" placeholder="Time">
+                            </div>
+                            <div class="staff-entry">
+                                <input type="text" name="other_staff2_s2" placeholder="Name">
+                                <input type="text" name="other_staff2_des_s2" placeholder="Designation">
+                                <input type="time" name="other_staff2_time_s2" placeholder="Time">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Act -->
+                    <div class="section-box">
+                        <h3>Act</h3>
+                        <div class="action-table">
+                            <div class="action-row">
+                                <span class="action-item">Measure & record cumulative blood loss</span>
+                                <input type="text" name="act_measure_s2" placeholder="Performed by" size="12">
+                                <input type="time" name="act_measure_time_s2" size="8">
+                                <input type="text" name="act_measure_init_s2" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Record observations on MEOWS every 10 min</span>
+                                <input type="text" name="act_meows_s2" placeholder="Performed by" size="12">
+                                <input type="time" name="act_meows_time_s2" size="8">
+                                <input type="text" name="act_meows_init_s2" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">2nd IV access (at least 16 Gauge) & fluid bolus</span>
+                                <input type="text" name="act_2ndiv_s2" placeholder="Performed by" size="12">
+                                <input type="time" name="act_2ndiv_time_s2" size="8">
+                                <input type="text" name="act_2ndiv_init_s2" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Take bloods: Point of care tests - ROTEM, venous lactate, venous Hb<br>Lab test - FBC, Coag, XMatch, U&E</span>
+                                <input type="text" name="act_bloods_s2" placeholder="Performed by" size="12">
+                                <input type="time" name="act_bloods_time_s2" size="8">
+                                <input type="text" name="act_bloods_init_s2" placeholder="Initial" size="5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Test Results -->
+                    <div class="test-results">
+                        <div class="results-column">
+                            <h4>Initial VBG Test Results</h4>
+                            <label>Time: <input type="time" name="vbg_time_s2"></label>
+                            <label>Hb = <input type="text" name="vbg_hb_s2" size="8"></label>
+                            <label>Lactate = <input type="text" name="vbg_lactate_s2" size="8"></label>
+                        </div>
+                        <div class="results-column">
+                            <h4>Initial ROTEM Test Results</h4>
+                            <label>FIBTEM A5 = <input type="text" name="rotem_fibtem_s2" size="8"></label>
+                            <p class="target">(Aim ≥ 9mm)</p>
+                            <label>EXTEM CT = <input type="text" name="rotem_extem_s2" size="8"></label>
+                            <p class="target">(Aim < 75 sec)</p>
+                        </div>
+                    </div>
+
+                    <!-- Review Causes -->
+                    <div class="section-box">
+                        <h3>Review causes (circle all identified)</h3>
+                        <div class="cause-checkboxes">
+                            <label><input type="checkbox" name="cause_tone_s2"> Tone</label>
+                            <label><input type="checkbox" name="cause_trauma_s2"> Trauma</label>
+                            <label><input type="checkbox" name="cause_tissue_s2"> Tissue</label>
+                            <label><input type="checkbox" name="cause_thrombin_s2"> Thrombin</label>
+                        </div>
+                    </div>
+
+                    <!-- Treat -->
+                    <div class="two-column-treat">
+                        <div class="treat-column">
+                            <h3>Treat</h3>
+                            <div class="action-table">
+                                <div class="action-row">
+                                    <span class="action-item">Review uterotonics (record on page 3)</span>
+                                    <input type="text" name="treat_review_utero_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_review_time_s2" size="8">
+                                    <input type="text" name="treat_review_init_s2" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Give tranexamic acid (1g IV)</span>
+                                    <input type="text" name="treat_tranex_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_tranex_time_s2" size="8">
+                                    <input type="text" name="treat_tranex_init_s2" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Bimanual compression</span>
+                                    <input type="text" name="treat_bimanual_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_bimanual_time_s2" size="8">
+                                    <input type="text" name="treat_bimanual_init_s2" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Consider Omeprazole</span>
+                                    <input type="text" name="treat_omep_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_omep_time_s2" size="8">
+                                    <input type="text" name="treat_omep_init_s2" placeholder="Initial" size="5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="treat-column">
+                            <h3>Treat</h3>
+                            <div class="action-table">
+                                <div class="action-row">
+                                    <span class="action-item">Empty bladder</span>
+                                    <input type="text" name="treat_bladder_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_bladder_time_s2" size="8">
+                                    <input type="text" name="treat_bladder_init_s2" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Indwelling catheter inserted</span>
+                                    <input type="text" name="treat_catheter_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_catheter_time_s2" size="8">
+                                    <input type="text" name="treat_catheter_init_s2" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Inspect & repair genital tract</span>
+                                    <input type="text" name="treat_repair_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_repair_time_s2" size="8">
+                                    <input type="text" name="treat_repair_init_s2" placeholder="Initial" size="5">
+                                </div>
+                                <div class="action-row">
+                                    <span class="action-item">Check placenta & membranes</span>
+                                    <input type="text" name="treat_check_plac_s2" placeholder="Performed by" size="12">
+                                    <input type="time" name="treat_check_time_s2" size="8">
+                                    <input type="text" name="treat_check_init_s2" placeholder="Initial" size="5">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- If Bleeding Stopped -->
+                    <div class="section-box stopped-section">
+                        <h3>If bleeding stopped</h3>
+                        <p>Ensure PPH post-event checklist completed & Management plan written in notes</p>
+                        <div class="form-completion">
+                            <label>Completed by: <input type="text" name="stage2_completed_by"></label>
+                            <label>Date: <input type="date" name="stage2_date"></label>
+                            <label>Time: <input type="time" name="stage2_time"></label>
+                            <label>Location: <input type="text" name="stage2_location"></label>
+                        </div>
+                    </div>
+
+                    <!-- Transfer to Theatre -->
+                    <div class="section-box transfer-section">
+                        <h3>If bleeding ongoing transfer patient to theatre</h3>
+                        <label>Time arrived: <input type="time" name="theatre_arrival_time"></label>
+                    </div>
+                </div>
+
+                <!-- STAGE 3 -->
+                <div class="stage-section stage-3">
+                    <h2 class="stage-title">Stage 3</h2>
+                    <h3 class="stage-subtitle">>1500mL blood loss OR ongoing clinical concern</h3>
+
+                    <!-- Act -->
+                    <div class="section-box">
+                        <h3>Act</h3>
+                        <div class="action-table">
+                            <div class="action-row">
+                                <span class="action-item">Communicate current measured blood loss to team</span>
+                                <input type="text" name="act_comm_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="act_comm_time_s3" size="8">
+                                <input type="text" name="act_comm_init_s3" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Activate MOH protocol</span>
+                                <input type="text" name="act_moh_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="act_moh_time_s3" size="8">
+                                <input type="text" name="act_moh_init_s3" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Inform Obstetric and Anaesthetic consultants</span>
+                                <input type="text" name="act_inform_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="act_inform_time_s3" size="8">
+                                <input type="text" name="act_inform_init_s3" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Order blood and coagulation products as per MOH and ROTEM protocol<br><em>- Do you need to discuss the case with a haematologist?</em></span>
+                                <input type="text" name="act_blood_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="act_blood_time_s3" size="8">
+                                <input type="text" name="act_blood_init_s3" placeholder="Initial" size="5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Causes -->
+                    <div class="section-box">
+                        <h3>Review causes (circle all identified)</h3>
+                        <div class="cause-checkboxes">
+                            <label><input type="checkbox" name="cause_tone_s3"> Tone</label>
+                            <label><input type="checkbox" name="cause_trauma_s3"> Trauma</label>
+                            <label><input type="checkbox" name="cause_tissue_s3"> Tissue</label>
+                            <label><input type="checkbox" name="cause_thrombin_s3"> Thrombin</label>
+                        </div>
+                    </div>
+
+                    <!-- Treat -->
+                    <div class="section-box">
+                        <h3>Treat</h3>
+                        <div class="action-table">
+                            <div class="action-row">
+                                <span class="action-item">Review uterotonics (record on page 3)</span>
+                                <input type="text" name="treat_utero_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="treat_utero_time_s3" size="8">
+                                <input type="text" name="treat_utero_init_s3" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Consider repeat tranexamic acid if bleeding ongoing (1g IV)</span>
+                                <input type="text" name="treat_repeat_tranex_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="treat_repeat_time_s3" size="8">
+                                <input type="text" name="treat_repeat_init_s3" placeholder="Initial" size="5">
+                            </div>
+                            <div class="action-row">
+                                <span class="action-item">Consider advanced surgical techniques (record on page 4)</span>
+                                <input type="text" name="treat_surgical_s3" placeholder="Performed by" size="12">
+                                <input type="time" name="treat_surgical_time_s3" size="8">
+                                <input type="text" name="treat_surgical_init_s3" placeholder="Initial" size="5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Staff -->
+                    <div class="section-box">
+                        <h4>Additional Staff Present:</h4>
+                        <div class="staff-entry">
+                            <input type="text" name="add_staff1_s3" placeholder="Name">
+                            <input type="text" name="add_staff1_des_s3" placeholder="Designation">
+                            <input type="time" name="add_staff1_time_s3" placeholder="Time arrived">
+                        </div>
+                        <div class="staff-entry">
+                            <input type="text" name="add_staff2_s3" placeholder="Name">
+                            <input type="text" name="add_staff2_des_s3" placeholder="Designation">
+                            <input type="time" name="add_staff2_time_s3" placeholder="Time arrived">
+                        </div>
+                    </div>
+
+                    <!-- If Bleeding Stopped -->
+                    <div class="section-box stopped-section">
+                        <h3>Once bleeding stopped</h3>
+                        <p>Ensure PPH post-event checklist completed & Management plan written in notes</p>
+                        <div class="form-completion">
+                            <label>Completed by: <input type="text" name="stage3_completed_by"></label>
+                            <label>Date: <input type="date" name="stage3_date"></label>
+                            <label>Time: <input type="time" name="stage3_time"></label>
+                            <label>Location: <input type="text" name="stage3_location"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3 - Blood Tests and Medications -->
+            <div class="page page-3 page-break">
+                <h2>Page 3 - Blood Test Results and Medications</h2>
+
+                <!-- Further Blood Test Results -->
+                <div class="section-box">
+                    <h3>Record of further blood test results</h3>
+                    <p class="section-note">(please do not duplicate records of blood results recorded in stage 2)</p>
+                    
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Time Taken</th>
+                                <th colspan="2">Further VBG Test Results</th>
+                                <th colspan="2">Further ROTEM Test Results</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>Hb</th>
+                                <th>Lactate</th>
+                                <th>FIBTEM A5 (Aim ≥ 9mm)</th>
+                                <th>EXTEM CT (Aim < 75 sec)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="time" name="blood_time_1"></td>
+                                <td><input type="text" name="hb_1" size="8"></td>
+                                <td><input type="text" name="lactate_1" size="8"></td>
+                                <td><input type="text" name="fibtem_1" size="8"></td>
+                                <td><input type="text" name="extem_1" size="8"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="time" name="blood_time_2"></td>
+                                <td><input type="text" name="hb_2" size="8"></td>
+                                <td><input type="text" name="lactate_2" size="8"></td>
+                                <td><input type="text" name="fibtem_2" size="8"></td>
+                                <td><input type="text" name="extem_2" size="8"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="time" name="blood_time_3"></td>
+                                <td><input type="text" name="hb_3" size="8"></td>
+                                <td><input type="text" name="lactate_3" size="8"></td>
+                                <td><input type="text" name="fibtem_3" size="8"></td>
+                                <td><input type="text" name="extem_3" size="8"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Record of Uterotonics -->
+                <div class="section-box">
+                    <h3>Record of uterotonics used</h3>
+                    <p class="section-note">(please record all uterotonics used here and prescribe on medication or anaesthetic chart)</p>
+                    
+                    <table class="medication-table">
+                        <thead>
+                            <tr>
+                                <th>Drug</th>
+                                <th>Dose (please circle route)</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oxytocin</td>
+                                <td>10 units IM or 5 units IV</td>
+                                <td><input type="time" name="oxytocin_time"></td>
+                            </tr>
+                            <tr>
+                                <td>Carbetocin</td>
+                                <td>100 microg IV</td>
+                                <td><input type="time" name="carbetocin_time"></td>
+                            </tr>
+                            <tr>
+                                <td>Ergometrine<br><em>(caution in HTN/PET)</em></td>
+                                <td>500 microg IV or IM</td>
+                                <td><input type="time" name="ergometrine_time"></td>
+                            </tr>
+                            <tr>
+                                <td>Syntometrine<br><em>(caution in HTN/PET)</em></td>
+                                <td>500 microg/5 units IM or IV</td>
+                                <td><input type="time" name="syntometrine_time"></td>
+                            </tr>
+                            <tr>
+                                <td>Oxytocin INF</td>
+                                <td>40 units over 4hr IV</td>
+                                <td><input type="time" name="oxytocin_inf_time"></td>
+                            </tr>
+                            <tr>
+                                <td>Misoprostol</td>
+                                <td><input type="text" name="misoprostol_dose" placeholder="Dose"></td>
+                                <td><input type="time" name="misoprostol_time"></td>
+                            </tr>
+                            <tr>
+                                <td>Misoprostol</td>
+                                <td><input type="text" name="misoprostol2_dose" placeholder="Dose"></td>
+                                <td><input type="time" name="misoprostol2_time"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Carboprost <em>(caution in asthma)</em></h4>
+                    <table class="medication-table">
+                        <thead>
+                            <tr>
+                                <th>Drug</th>
+                                <th>Dose</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM (repeat up to every 15min)</td>
+                                <td><input type="time" name="carboprost_1"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_2"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_3"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_4"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_5"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_6"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_7"></td>
+                            </tr>
+                            <tr>
+                                <td>Carboprost</td>
+                                <td>250 microg IM</td>
+                                <td><input type="time" name="carboprost_8"></td>
+                            </tr>
+                            <tr>
+                                <td>Other</td>
+                                <td><input type="text" name="other_drug" placeholder="Drug and dose"></td>
+                                <td><input type="time" name="other_drug_time"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Blood Products and Blood Loss -->
+                <div class="two-column-layout">
+                    <div class="section-box">
+                        <h3>Blood & blood products transfused</h3>
+                        <table class="simple-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Product given</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="time" name="product_time_1"></td>
+                                    <td><input type="text" name="product_1"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="product_time_2"></td>
+                                    <td><input type="text" name="product_2"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="product_time_3"></td>
+                                    <td><input type="text" name="product_3"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="product_time_4"></td>
+                                    <td><input type="text" name="product_4"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="product_time_5"></td>
+                                    <td><input type="text" name="product_5"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="product_time_6"></td>
+                                    <td><input type="text" name="product_6"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="section-box">
+                        <h3>Measured cumulative blood loss</h3>
+                        <table class="simple-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Blood Loss (ml)</th>
+                                    <th>Running total (ml)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="time" name="loss_time_1"></td>
+                                    <td><input type="number" name="loss_1"></td>
+                                    <td><input type="number" name="total_1"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="loss_time_2"></td>
+                                    <td><input type="number" name="loss_2"></td>
+                                    <td><input type="number" name="total_2"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="loss_time_3"></td>
+                                    <td><input type="number" name="loss_3"></td>
+                                    <td><input type="number" name="total_3"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="loss_time_4"></td>
+                                    <td><input type="number" name="loss_4"></td>
+                                    <td><input type="number" name="total_4"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="loss_time_5"></td>
+                                    <td><input type="number" name="loss_5"></td>
+                                    <td><input type="number" name="total_5"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" name="loss_time_6"></td>
+                                    <td><input type="number" name="loss_6"></td>
+                                    <td><input type="number" name="total_6"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 4 - Post-event Checklist -->
+            <div class="page page-4 page-break">
+                <h2>PPH Post-event Checklist</h2>
+                <p class="section-note">Produced by OBSUK, acknowledging the work of OBS Cymru. Please contact OBSUK@cardiff.ac.uk for more information</p>
+
+                <!-- Date/Time Document -->
+                <div class="section-box">
+                    <h3>Date/Time Document of concerns, deviations & other information</h3>
+                    <textarea name="concerns_deviations" rows="4" style="width: 100%;"></textarea>
+                </div>
+
+                <!-- WHO Sign-out -->
+                <div class="section-box">
+                    <div class="yes-no-group">
+                        <label>WHO sign-out completed?</label>
+                        <label><input type="radio" name="who_signout" value="yes"> Yes</label>
+                        <label><input type="radio" name="who_signout" value="no"> No</label>
+                        <label><input type="radio" name="who_signout" value="na"> NA (patient did not require care in theatre)</label>
+                    </div>
+                </div>
+
+                <!-- Drugs Prescribed -->
+                <div class="section-box">
+                    <div class="yes-no-group">
+                        <label>Have all drugs been prescribed and signed for?</label>
+                        <label><input type="radio" name="drugs_prescribed" value="yes"> Yes</label>
+                        <label><input type="radio" name="drugs_prescribed" value="no"> No</label>
+                        <label><input type="radio" name="drugs_prescribed" value="na"> NA</label>
+                    </div>
+                </div>
+
+                <!-- MOH Protocol -->
+                <div class="section-box">
+                    <label><strong>If MOH protocol was activated before stage 3 or not activated at stage 3 then please detail reason(s) why:</strong></label>
+                    <textarea name="moh_reasons" rows="3" style="width: 100%;"></textarea>
+                </div>
+
+                <!-- Datix Form -->
+                <div class="section-box">
+                    <div class="yes-no-group">
+                        <label>Does a Datix form need completing?</label>
+                        <label><input type="radio" name="datix_needed" value="yes"> Yes</label>
+                        <label><input type="radio" name="datix_needed" value="no"> No</label>
+                    </div>
+                    
+                    <div class="datix-details">
+                        <label>If yes record:</label>
+                        <label>- Datix form number: <input type="text" name="datix_number"></label>
+                        <label>- Person responsible for completing Datix form: <input type="text" name="datix_responsible"></label>
+                    </div>
+                </div>
+
+                <!-- Discussion with Patient -->
+                <div class="section-box">
+                    <div class="yes-no-group">
+                        <label>Has the event been discussed with the patient and birth partner?</label>
+                        <label><input type="radio" name="patient_discussion" value="yes"> Yes</label>
+                        <label><input type="radio" name="patient_discussion" value="no"> No</label>
+                    </div>
+                </div>
+
+                <!-- Team Debrief -->
+                <div class="section-box">
+                    <div class="yes-no-group">
+                        <label>Does a formal team debrief need to take place?</label>
+                        <label><input type="radio" name="team_debrief" value="yes"> Yes</label>
+                        <label><input type="radio" name="team_debrief" value="no"> No</label>
+                    </div>
+                </div>
+
+                <!-- Post-event Re-bleed Risk Assessment -->
+                <div class="section-box">
+                    <h3>Post-event Re-bleed Risk Assessment</h3>
+                    
+                    <div class="yes-no-group">
+                        <label>Syntocinon infusion running or required?</label>
+                        <label><input type="radio" name="syntocinon" value="yes"> Yes</label>
+                        <label><input type="radio" name="syntocinon" value="no"> No</label>
+                        <label>Time expected to finish: <input type="time" name="syntocinon_finish"></label>
+                    </div>
+
+                    <div class="yes-no-group">
+                        <label>Vaginal pack insitu?</label>
+                        <label><input type="radio" name="vaginal_pack" value="yes"> Yes</label>
+                        <label><input type="radio" name="vaginal_pack" value="no"> No</label>
+                        <label>Planned removal time: <input type="time" name="vaginal_pack_removal"></label>
+                    </div>
+
+                    <div class="yes-no-group">
+                        <label>Bakri Balloon insitu?</label>
+                        <label><input type="radio" name="bakri_balloon" value="yes"> Yes</label>
+                        <label><input type="radio" name="bakri_balloon" value="no"> No</label>
+                        <label>Planned removal time: <input type="time" name="bakri_removal"></label>
+                    </div>
+
+                    <div class="yes-no-group">
+                        <label>Can NSAID be given?</label>
+                        <label><input type="radio" name="nsaid" value="yes"> Yes</label>
+                        <label><input type="radio" name="nsaid" value="no"> No</label>
+                        <label><input type="radio" name="nsaid" value="not_yet"> Not yet</label>
+                    </div>
+                </div>
+
+                <!-- Thromboprophylaxis Plan -->
+                <div class="section-box">
+                    <h3>Thromboprophylaxis plan:</h3>
+                    <div class="yes-no-group">
+                        <label>LMWH</label>
+                        <label><input type="radio" name="lmwh" value="yes"> Yes</label>
+                        <label><input type="radio" name="lmwh" value="no"> No</label>
+                        <label>Time of first dose: <input type="time" name="lmwh_time"></label>
+                    </div>
+                    <div class="yes-no-group">
+                        <label>TEDS</label>
+                        <label><input type="radio" name="teds" value="yes"> Yes</label>
+                        <label><input type="radio" name="teds" value="no"> No</label>
+                    </div>
+                </div>
+
+                <!-- Post-event Monitoring -->
+                <div class="section-box">
+                    <h3>Post-event Monitoring Requirements</h3>
+                    
+                    <div class="monitoring-item">
+                        <label>Level of post-event care required (circle applicable):</label>
+                        <label><input type="radio" name="care_level" value="level1"> Level 1</label>
+                        <label><input type="radio" name="care_level" value="level2"> Level 2 (HDU)</label>
+                        <label><input type="radio" name="care_level" value="level3"> Level 3 (ICU)</label>
+                    </div>
+
+                    <div class="monitoring-item">
+                        <label>Post-op bloods (FBC/Coag/U&E) to be taken at Time: <input type="time" name="postop_bloods_time"></label>
+                        <label>Plan to transfuse if Hb < <input type="text" name="transfuse_threshold" size="6"></label>
+                    </div>
+
+                    <div class="yes-no-group">
+                        <label>PV loss monitoring required?</label>
+                        <label><input type="radio" name="pv_monitoring" value="yes"> Yes</label>
+                        <label><input type="radio" name="pv_monitoring" value="no"> No</label>
+                        <label>Frequency of monitoring: <input type="text" name="pv_frequency"></label>
+                    </div>
+
+                    <div class="yes-no-group">
+                        <label>Urine output monitoring required?</label>
+                        <label><input type="radio" name="urine_monitoring" value="yes"> Yes</label>
+                        <label><input type="radio" name="urine_monitoring" value="no"> No</label>
+                        <label>Frequency of monitoring: <input type="text" name="urine_frequency"></label>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Footer -->
+        <footer class="no-print">
+            <p>OBS UK - Obstetric Bleeding Study UK | Postpartum Haemorrhage Management Checklist</p>
+            <p>For more information, contact: OBSUK@cardiff.ac.uk</p>
+        </footer>
+    </div>
+
+    <!-- Load jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
